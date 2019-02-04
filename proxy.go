@@ -7,7 +7,7 @@ import (
 	"net/http/httputil"
 	"net/url"
 
-	"github.com/imkira/gcp-iap-auth/jwt"
+	"github.com/slavayssiere/gcp-iap-auth/jwt"
 )
 
 type proxy struct {

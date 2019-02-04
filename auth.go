@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/imkira/gcp-iap-auth/jwt"
+	"github.com/slavayssiere/gcp-iap-auth/jwt"
 )
 
 type userIdentity struct {

@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/imkira/gcp-iap-auth/jwt"
 	"github.com/namsral/flag"
+	"github.com/slavayssiere/gcp-iap-auth/jwt"
 )
 
 const flagEnvPrefix = "GCP_IAP_AUTH"

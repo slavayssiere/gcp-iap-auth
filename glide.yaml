@@ -1,4 +1,4 @@
-package: github.com/imkira/gcp-iap-auth
+package: github.com/slavayssiere/gcp-iap-auth
 license: MIT
 import:
 - package: github.com/dgrijalva/jwt-go
