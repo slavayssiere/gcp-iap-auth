@@ -63,28 +63,11 @@ func LoggerMiddleware(inner http.HandlerFunc, name string) http.Handler {
 			start := time.Now()
 
 			log.Println(name)
-			//tokenString := (*r).Header["X-Goog-Iap-Jwt-Assertion"][0]
 			claims, err := jwt.RequestClaims(r, cfg)
 			log.Println(err)
 			log.Println(claims)
 			log.Println(claims.Email)
 			log.Println(claims.Subject)
-
-			// token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
-			// 	// Don't forget to validate the alg is what you expect:
-			// 	if _, ok := token.Method.(*jwt.SigningMethodECDSA); !ok {
-			// 		return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
-			// 	}
-
-			// 	// hmacSampleSecret is a []byte containing your secret, e.g. []byte("my_secret_key")
-			// 	return []byte("BTX6xf6J7nBXFCSHEQJ3AChg"), nil
-			// })
-
-			// if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-			// 	log.Println(claims)
-			// } else {
-			// 	log.Println(err)
-			// }
 
 			inner.ServeHTTP(w, r)
 
@@ -101,5 +84,17 @@ func LoggerMiddleware(inner http.HandlerFunc, name string) http.Handler {
 		}
 	})
 }
-
 ```
+
+## test
+
+- Create new credential in your GCP account
+- Create new secret "my-secret" with CLIENT_ID and CLIENT_SECRET
+
+```bash
+kubectl create secret generic my-secret \
+	--from-literal=client_id=$CLIENT_ID \
+    --from-literal=client_secret=$CLIENT_SECRET
+```
+
+- Launch deployment of your app and Kubernetes object with "gke/deploy.yaml"
