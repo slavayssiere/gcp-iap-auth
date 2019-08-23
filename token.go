@@ -14,6 +14,11 @@ const (
 	issuerClaim    = "https://cloud.google.com/iap"
 )
 
+// GetTokenHeader : usefull to propagate header in other call
+func GetTokenHeader() string {
+	return tokenHeader
+}
+
 func tokenKey(token *jwt.Token) (interface{}, error) {
 	if _, ok := tokenMethod(token); !ok {
 		return nil, fmt.Errorf("Invalid algorithm: %v", token.Header[algorithmClaim])
