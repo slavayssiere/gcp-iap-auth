@@ -27,7 +27,7 @@ func (c Claims) Valid() error {
 		return fmt.Errorf("Invalid audience %q: %v", c.Audience, err)
 	}
 	fmt.Printf("c.Audience: %s\n",c.Audience)
-	fmt.Printf("aud: %s\n",aud)
+	fmt.Printf("aud: %s\n",(string)(*aud))
 	if !c.cfg.matchesAudience(aud) {
 		return fmt.Errorf("Unexpected audience: %q", c.Audience)
 	}
