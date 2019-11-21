@@ -26,6 +26,8 @@ func (c Claims) Valid() error {
 	if err != nil {
 		return fmt.Errorf("Invalid audience %q: %v", c.Audience, err)
 	}
+	fmt.Printf("c.Audience: %s\n",c.Audience)
+	fmt.Printf("aud: %s\n",aud)
 	if !c.cfg.matchesAudience(aud) {
 		return fmt.Errorf("Unexpected audience: %q", c.Audience)
 	}
